@@ -34,24 +34,19 @@ function updateTarget(){
 
 var wins = 0;
 
-function updateWins(){
-    $("#wins").text("Wins: " + wins);    
-}
-
 function youWin(){
-    alert("YOU WIN!")
     wins++;
     updateWins();
     updateGame();
 }
 
+function updateWins(){
+    $("#wins").text("Wins: " + wins);    
+}
+
 // Functions for Loses
 
 var loses = 0;
-
-function updateLoses(){
-    $("#loses").text("Loses: " + loses);    
-}
 
 function youLose(){
     loses++;
@@ -59,10 +54,29 @@ function youLose(){
     updateGame();
 }
 
+function updateLoses(){
+    $("#loses").text("Loses: " + loses);    
+}
+
 // Function for Game Update
 
 function updateGame(){
     counter = 0;
+    updateCounter();
+    targetNumber = randomTarget();
+    updateTarget();
+    blue = 0;
+    blue = randomCrystal();
+    green = 0;
+    green = randomCrystal();
+    orange = 0;
+    orange = randomCrystal();
+    pink = 0;
+    pink = randomCrystal();
+    console.log(blue);
+    console.log(green);
+    console.log(orange);
+    console.log(pink);
 }
 
 // Function that adds cyrstal value to Total Score when Image Clicked 
@@ -91,6 +105,9 @@ $("#pinkimg").on("click", function(){
 
 var counter = 0;
 
+function updateCounter(){
+    $("#counter").text(counter);
+
     if (counter === targetNumber){
         youWin();
     }
@@ -99,11 +116,13 @@ var counter = 0;
         youLose();
     }
 
-function updateCounter(){
-    $("#counter").text(counter);
+    console.log(counter);
+    console.log(targetNumber);
+
 }
 
 // Game Initializers
+
 updateTarget();
 updateCounter();
 updateWins();
